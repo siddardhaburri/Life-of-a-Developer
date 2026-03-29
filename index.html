@@ -1,596 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Life of a Developer — An Honest Account</title>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="A five-chapter interactive memoir about the beautiful chaos of being a developer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Epilogue:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════
-     LOADER
-════════════════════════════════════════════════════════════ -->
-<div id="loader">
-  <div class="loader-label">
-    The Life of a Developer<br>
-    <span style="opacity:0.5;font-size:0.65em;font-style:normal;font-family:'DM Mono',monospace">An Honest Account</span>
-  </div>
-  <div class="loader-bar"></div>
-  <div class="loader-text">Compiling experience<span class="blink">_</span></div>
-</div>
-
-<!-- Reading progress bar -->
-<div id="progress-bar"></div>
-
-<!-- Custom cursor follower -->
-<div id="cursor-follower"></div>
-
-<!-- ═══════════════════════════════════════════════════════
-     NAVIGATION
-════════════════════════════════════════════════════════════ -->
-<nav id="main-nav">
-  <span class="nav-brand">Dev Odyssey</span>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#hello"     onclick="closeNav()">Hello World</a></li>
-    <li><a href="#debug"     onclick="closeNav()">The Bug</a></li>
-    <li><a href="#coffee"    onclick="closeNav()">Caffeine</a></li>
-    <li><a href="#deadline"  onclick="closeNav()">Deadline</a></li>
-    <li><a href="#enlighten" onclick="closeNav()">Enlightenment</a></li>
-  </ul>
-  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- Chapter dot navigator (right rail, desktop only) -->
-<div id="chapter-indicator">
-  <div class="chapter-dot active" data-section="hero"      onclick="scrollToSection('hero')"></div>
-  <div class="chapter-dot"        data-section="hello"     onclick="scrollToSection('hello')"></div>
-  <div class="chapter-dot"        data-section="debug"     onclick="scrollToSection('debug')"></div>
-  <div class="chapter-dot"        data-section="coffee"    onclick="scrollToSection('coffee')"></div>
-  <div class="chapter-dot"        data-section="deadline"  onclick="scrollToSection('deadline')"></div>
-  <div class="chapter-dot"        data-section="enlighten" onclick="scrollToSection('enlighten')"></div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════
-     HERO
-════════════════════════════════════════════════════════════ -->
-<section id="hero">
-  <div class="hero-grid"></div>
-  <p class="hero-eyebrow">A five-chapter memoir · Non-fiction · 2024</p>
-  <h1 class="hero-title">The <em>Life</em> of a Developer</h1>
-  <p class="hero-sub">
-    A rigorously documented account of one human's journey from typing
-    <code style="font-family:var(--font-mono);font-size:0.9em;background:var(--paper-warm);padding:2px 6px;border-radius:3px">Hello, World</code>
-    to understanding why nothing ever works the way it should.
-  </p>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>Scroll to begin</span>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- ═══════════════════════════════════════════════════════
-     CHAPTER 01 — HELLO WORLD
-════════════════════════════════════════════════════════════ -->
-<section class="chapter" id="hello">
-  <div class="chapter-inner">
-    <div class="chapter-number reveal">Chapter 01</div>
-    <h2 class="chapter-title reveal reveal-delay-1">Hello, <em>World</em></h2>
-    <p class="chapter-lead reveal reveal-delay-2">
-      Every developer begins with the same three words. What follows next is a lifelong attempt
-      to understand why those three words took forty-five minutes to figure out.
-    </p>
-
-    <div class="two-col">
-
-      <!-- Left: code block + error list -->
-      <div class="reveal reveal-left reveal-delay-1">
-        <div class="code-block">
-          <div style="height:18px"></div>
-          <span class="comment"># Day 1 of learning to code</span><br>
-          <span class="keyword">print</span>(<span class="string">"Hello, World"</span>)<br><br>
-          <span class="comment"># Day 1, attempt #37</span><br>
-          <span class="keyword">print</span>(<span class="string">"Hello World"</span>)<br><br>
-          <span class="comment"># It works. You don't know why.</span><br>
-          <span class="comment"># You never ask.</span><br>
-          <span class="comment"># This is the beginning.</span>
-        </div>
-
-        <div style="margin-top:24px;padding:20px;border:1px solid var(--rule);border-radius:6px;background:var(--paper-card)">
-          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);margin-bottom:10px;letter-spacing:0.06em">
-            ERRORS ENCOUNTERED ON DAY ONE
-          </div>
-          <div style="display:flex;flex-direction:column;gap:8px">
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0"></div>
-              <span style="font-size:13px;color:var(--ink-soft)">SyntaxError: Missing parenthesis (×12)</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:8px;height:8px;border-radius:50%;background:var(--amber);flex-shrink:0"></div>
-              <span style="font-size:13px;color:var(--ink-soft)">IndentationError: Unexpected indent (×8)</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px">
-              <div style="width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0"></div>
-              <span style="font-size:13px;color:var(--ink-soft)">Existential crisis (×3)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right: pull quote + stats -->
-      <div class="reveal reveal-delay-2">
-        <div class="pull-quote">
-          "The first bug you encounter will be a missing comma.
-           The last bug you encounter will also be a missing comma."
-        </div>
-        <p style="font-size:15px;color:var(--ink-soft);line-height:1.7;margin-bottom:20px">
-          Nobody warned you that programming is 30% thinking, 10% typing, and 60% staring at
-          a screen wondering if you should have studied law instead.
-        </p>
-        <p style="font-size:15px;color:var(--ink-soft);line-height:1.7">
-          You chose this. Every day you choose this again. Often at 2 AM, with cold coffee, when
-          the error message reads
-          <code style="font-family:var(--font-mono);font-size:0.85em;background:var(--paper-warm);padding:2px 5px;border-radius:3px">undefined is not a function</code>.
-        </p>
-        <div style="margin-top:32px;display:flex;gap:24px;flex-wrap:wrap">
-          <div style="text-align:center">
-            <span style="font-family:var(--font-serif);font-size:36px;font-weight:700;display:block">6yrs</span>
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--ink-muted)">Before Stack Overflow helps less</span>
-          </div>
-          <div style="text-align:center">
-            <span style="font-family:var(--font-serif);font-size:36px;font-weight:700;display:block">∞</span>
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--ink-muted)">Tabs open at any given time</span>
-          </div>
-          <div style="text-align:center">
-            <span style="font-family:var(--font-serif);font-size:36px;font-weight:700;display:block">1</span>
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--ink-muted)">Dark theme. Always dark.</span>
-          </div>
-        </div>
-      </div>
-
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">DEV<em>.</em>MEMOIR</div>
+      <div class="loader-boot" id="boot-text"></div>
+      <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+      <div class="loader-pct" id="loader-pct">0%</div>
     </div>
   </div>
-</section>
 
-<hr class="divider">
+  <!-- CURSOR -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
 
-<!-- ═══════════════════════════════════════════════════════
-     CHAPTER 02 — THE BUG
-════════════════════════════════════════════════════════════ -->
-<section class="chapter" id="debug">
-  <div class="chapter-inner">
-    <div class="chapter-number reveal">Chapter 02</div>
-    <h2 class="chapter-title reveal reveal-delay-1">The <em>Bug</em></h2>
-    <p class="chapter-lead reveal reveal-delay-2">
-      There is always a bug. There has always been a bug.
-      The bug was there before you wrote the code. The bug will outlive us all.
-    </p>
+  <!-- SCROLL PROGRESS -->
+  <div id="scroll-progress"></div>
 
-    <div class="two-col" style="gap:56px">
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a class="nav-logo" href="#">DEV<em>.</em>MEMOIR</a>
+    <ul class="nav-links">
+      <li><a href="#hello">Hello World</a></li>
+      <li><a href="#debug">The Bug</a></li>
+      <li><a href="#coffee">Caffeine</a></li>
+      <li><a href="#deadline">Deadline</a></li>
+      <li><a href="#enlighten">Enlightenment</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-      <!-- Left: counters + stage bars -->
-      <div>
-        <div class="bug-stats reveal">
-          <div class="stat-card">
-            <span class="stat-num" id="count-hours">0</span>
-            <span class="stat-label">Hours debugging</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num" id="count-console">0</span>
-            <span class="stat-label">console.log calls</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num" id="count-turns">0</span>
-            <span class="stat-label">It was a typo</span>
-          </div>
-        </div>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#hello" class="mm-link">01 — Hello World</a>
+    <a href="#debug" class="mm-link">02 — The Bug</a>
+    <a href="#coffee" class="mm-link">03 — Caffeine</a>
+    <a href="#deadline" class="mm-link">04 — Deadline</a>
+    <a href="#enlighten" class="mm-link">05 — Enlightenment</a>
+  </div>
 
-        <div style="margin-top:40px" class="reveal reveal-delay-2">
-          <p style="font-size:13px;color:var(--ink-muted);font-family:var(--font-mono);margin-bottom:4px;letter-spacing:0.04em">
-            STAGES OF DEBUGGING
-          </p>
-          <div style="margin-top:16px;display:flex;flex-direction:column;gap:8px" id="stage-bars">
-            <div>
-              <div class="coffee-label"><span>Denial</span><span>100%</span></div>
-              <div class="coffee-bar-container"><div class="coffee-bar-fill" data-val="100"></div></div>
-            </div>
-            <div>
-              <div class="coffee-label"><span>Anger</span><span>95%</span></div>
-              <div class="coffee-bar-container"><div class="coffee-bar-fill" data-val="95"></div></div>
-            </div>
-            <div>
-              <div class="coffee-label"><span>Google "why does my code not work"</span><span>88%</span></div>
-              <div class="coffee-bar-container"><div class="coffee-bar-fill" data-val="88"></div></div>
-            </div>
-            <div>
-              <div class="coffee-label"><span>Bargaining with Stack Overflow</span><span>72%</span></div>
-              <div class="coffee-bar-container"><div class="coffee-bar-fill" data-val="72"></div></div>
-            </div>
-            <div>
-              <div class="coffee-label"><span>Explaining to rubber duck</span><span>60%</span></div>
-              <div class="coffee-bar-container"><div class="coffee-bar-fill" data-val="60"></div></div>
-            </div>
-            <div>
-              <div class="coffee-label"><span>Acceptance (it was a semicolon)</span><span>100%</span></div>
-              <div class="coffee-bar-container"><div class="coffee-bar-fill" data-val="100"></div></div>
-            </div>
-          </div>
-        </div>
+  <!-- CHAPTER DOTS -->
+  <nav class="ch-dots" id="ch-dots" aria-label="chapter navigation">
+    <button class="ch-dot active" data-target="hero" title="Intro"></button>
+    <button class="ch-dot" data-target="hello" title="Hello World"></button>
+    <button class="ch-dot" data-target="debug" title="The Bug"></button>
+    <button class="ch-dot" data-target="coffee" title="Caffeine"></button>
+    <button class="ch-dot" data-target="deadline" title="Deadline"></button>
+    <button class="ch-dot" data-target="enlighten" title="Enlightenment"></button>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="hero-content">
+      <p class="hero-tag reveal-h" style="--d:0.2s">A Five-Chapter Memoir · Non-Fiction · 2026</p>
+      <h1 class="hero-title">
+        <span class="hl reveal-h" style="--d:0.4s">The <em>Life</em></span>
+        <span class="hl reveal-h" style="--d:0.55s">of a</span>
+        <span class="hl reveal-h" style="--d:0.7s">Developer</span>
+      </h1>
+      <p class="hero-sub reveal-h" style="--d:0.9s">
+        A rigorously documented account of one human's journey from typing
+        <code>Hello, World</code> to understanding why nothing ever works the way it should.
+      </p>
+      <div class="hero-cta reveal-h" style="--d:1.1s">
+        <span>Scroll to begin</span>
+        <div class="cta-arrow-wrap"><div class="cta-arrow"></div></div>
       </div>
+    </div>
 
-      <!-- Right: bug accordion timeline -->
-      <div class="reveal reveal-delay-2">
-        <p style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;margin-bottom:16px">
-          CLICK AN ENTRY TO REVEAL THE TRUTH
-        </p>
-        <div class="bug-timeline">
-          <div class="bug-entry" onclick="toggleBug(this)">
-            <div class="bug-time">09:14 AM</div>
-            <div class="bug-title">Code works on my machine</div>
-            <div class="bug-desc">Feature is complete. QA says it's broken. You know QA is wrong.</div>
-            <div class="bug-detail">
-              <div class="bug-detail-inner">
-                <span class="err">EnvironmentError:</span> Works exclusively in your specific setup.
-                The production server runs Node 16. You're on Node 21. The difference: everything.
+    <div class="hero-stats reveal-h" style="--d:1.3s">
+      <div class="hs">
+        <div class="hs-n">∞</div>
+        <div class="hs-l">Tabs open<br>at any given time</div>
+      </div>
+      <div class="hs-div"></div>
+      <div class="hs">
+        <div class="hs-n">6yr</div>
+        <div class="hs-l">Before Stack Overflow<br>helps less</div>
+      </div>
+      <div class="hs-div"></div>
+      <div class="hs">
+        <div class="hs-n">1</div>
+        <div class="hs-l">Dark theme.<br>Always dark.</div>
+      </div>
+    </div>
+
+    <!-- Floating snippets -->
+    <div class="fc fc-1 reveal-h" style="--d:1.5s"><span class="fc-fn">print</span>(<span class="fc-s">"Hello, World"</span>)</div>
+    <div class="fc fc-2 reveal-h" style="--d:1.7s"><span class="fc-e">SyntaxError</span>: ×12</div>
+    <div class="fc fc-3 reveal-h" style="--d:1.9s">git commit -m <span class="fc-s">"please work"</span></div>
+    <div class="fc fc-4 reveal-h" style="--d:2.1s">npm ERR! <span class="fc-e">ENOENT</span></div>
+  </section>
+
+  <!-- ═══════════ CH01 HELLO WORLD ═══════════ -->
+  <section id="hello" class="ch-section">
+    <div class="container">
+      <header class="ch-header reveal">
+        <div class="ch-badge"><span class="ch-n">01</span><span class="ch-rule"></span><span class="ch-lbl">Hello, World</span></div>
+        <h2 class="ch-title">Hello, <em>World</em></h2>
+        <p class="ch-lead">Every developer begins with the same three words. What follows is a lifelong attempt to understand why those three words took forty-five minutes to figure out.</p>
+      </header>
+
+      <div class="hello-grid">
+        <!-- Terminal -->
+        <div class="terminal reveal rd1">
+          <div class="term-bar">
+            <div class="term-dots">
+              <span class="td red"></span><span class="td yellow"></span><span class="td green"></span>
+            </div>
+            <span class="term-name">main.py — attempt #37</span>
+            <span class="term-shell">zsh</span>
+          </div>
+          <div class="term-body">
+            <div class="tl c"># Day 1 of learning to code</div>
+            <div class="tl"><span class="fn">print</span>(<span class="str">"Hello, World"</span>)</div>
+            <div class="tl err">❯ SyntaxError: Missing parenthesis</div>
+            <div class="tl">&nbsp;</div>
+            <div class="tl c"># Day 1, attempt #12</div>
+            <div class="tl"><span class="fn">print</span>(<span class="str">"Hello World"</span>)</div>
+            <div class="tl err">❯ IndentationError: Unexpected indent</div>
+            <div class="tl">&nbsp;</div>
+            <div class="tl c"># Day 1, attempt #37</div>
+            <div class="tl"><span class="fn">print</span>(<span class="str">"Hello, World"</span>)</div>
+            <div class="tl ok">❯ Hello, World</div>
+            <div class="tl">&nbsp;</div>
+            <div class="tl c"># It works. You don't know why.</div>
+            <div class="tl c"># You never ask. This is the beginning.</div>
+            <div class="tl blink-cursor">█</div>
+          </div>
+        </div>
+
+        <!-- Right panel -->
+        <div class="hello-right">
+          <div class="err-stack reveal rd2">
+            <p class="panel-lbl">Errors encountered on Day One</p>
+            <div class="err-row">
+              <span class="err-badge red">×12</span>
+              <div class="err-info">
+                <div class="err-name">SyntaxError</div>
+                <div class="err-sub">Missing parenthesis</div>
               </div>
+              <div class="err-bar"><div class="err-fill red" style="width:85%"></div></div>
             </div>
-          </div>
-          <div class="bug-entry" onclick="toggleBug(this)">
-            <div class="bug-time">11:03 AM</div>
-            <div class="bug-title">Undefined is not a function</div>
-            <div class="bug-desc">A classic. An old friend. You have met before in dark times.</div>
-            <div class="bug-detail">
-              <div class="bug-detail-inner">
-                <span class="err">TypeError:</span> You called <code>getUserData()</code> before
-                the data was fetched. Async functions existed for a reason. You know this reason.
-                You forgot this reason.
+            <div class="err-row">
+              <span class="err-badge amber">×8</span>
+              <div class="err-info">
+                <div class="err-name">IndentationError</div>
+                <div class="err-sub">Unexpected indent</div>
               </div>
+              <div class="err-bar"><div class="err-fill amber" style="width:62%"></div></div>
             </div>
-          </div>
-          <div class="bug-entry" onclick="toggleBug(this)">
-            <div class="bug-time">2:47 PM</div>
-            <div class="bug-title">It was working this morning</div>
-            <div class="bug-desc">You changed "one small thing." It was not one small thing.</div>
-            <div class="bug-detail">
-              <div class="bug-detail-inner">
-                <span class="err">CasualtyReport:</span> You renamed a variable from
-                <code>userData</code> to <code>userInfo</code> at 11:47 AM but forgot to update
-                line 284. You will not admit this in the stand-up.
+            <div class="err-row">
+              <span class="err-badge blue">×3</span>
+              <div class="err-info">
+                <div class="err-name">ExistentialError</div>
+                <div class="err-sub">Should have studied law</div>
               </div>
+              <div class="err-bar"><div class="err-fill blue" style="width:28%"></div></div>
             </div>
           </div>
-          <div class="bug-entry" onclick="toggleBug(this)">
-            <div class="bug-time">4:59 PM</div>
-            <div class="bug-title">Fixed it</div>
-            <div class="bug-desc">You don't know how. You don't know why. Please don't ask.</div>
-            <div class="bug-detail">
-              <div class="bug-detail-inner">
-                <span class="err">Resolution:</span> You deleted the <code>node_modules</code>
-                folder and ran <code>npm install</code>. This is superstition. It worked anyway.
-              </div>
+
+          <blockquote class="pull-quote reveal rd3">
+            <div class="pq-mark">"</div>
+            <p>The first bug you encounter will be a missing comma. The last bug you encounter will also be a missing comma.</p>
+          </blockquote>
+
+          <p class="body-text reveal rd3">Nobody warned you that programming is 30% thinking, 10% typing, and 60% staring at a screen wondering if you should have studied law instead. You chose this. Every day you choose this again.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CH02 THE BUG ═══════════ -->
+  <section id="debug" class="ch-section ch-alt">
+    <div class="container">
+      <header class="ch-header reveal">
+        <div class="ch-badge"><span class="ch-n">02</span><span class="ch-rule"></span><span class="ch-lbl">The Bug</span></div>
+        <h2 class="ch-title">The <em>Bug</em></h2>
+        <p class="ch-lead">There is always a bug. There has always been a bug. The bug was there before you wrote the code. The bug will outlive us all.</p>
+      </header>
+
+      <div class="debug-layout">
+        <!-- Grief bars -->
+        <div class="grief-panel reveal">
+          <p class="panel-lbl">Stages of Debugging</p>
+          <div id="grief-bars">
+            <div class="g-bar" data-pct="100">
+              <div class="gb-top"><span>Denial</span><span class="gb-pct">100%</span></div>
+              <div class="gb-track"><div class="gb-fill"></div></div>
+            </div>
+            <div class="g-bar" data-pct="95">
+              <div class="gb-top"><span>Anger</span><span class="gb-pct">95%</span></div>
+              <div class="gb-track"><div class="gb-fill"></div></div>
+            </div>
+            <div class="g-bar" data-pct="88">
+              <div class="gb-top"><span>Google "why does my code not work"</span><span class="gb-pct">88%</span></div>
+              <div class="gb-track"><div class="gb-fill"></div></div>
+            </div>
+            <div class="g-bar" data-pct="72">
+              <div class="gb-top"><span>Bargaining with Stack Overflow</span><span class="gb-pct">72%</span></div>
+              <div class="gb-track"><div class="gb-fill"></div></div>
+            </div>
+            <div class="g-bar" data-pct="60">
+              <div class="gb-top"><span>Explaining to rubber duck</span><span class="gb-pct">60%</span></div>
+              <div class="gb-track"><div class="gb-fill"></div></div>
+            </div>
+            <div class="g-bar" data-pct="100">
+              <div class="gb-top"><span>Acceptance (it was a semicolon)</span><span class="gb-pct">100%</span></div>
+              <div class="gb-track"><div class="gb-fill finale"></div></div>
             </div>
           </div>
         </div>
-      </div>
 
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- ═══════════════════════════════════════════════════════
-     CHAPTER 03 — THE CAFFEINE CHRONICLES
-════════════════════════════════════════════════════════════ -->
-<section class="chapter" id="coffee">
-  <div class="chapter-inner">
-    <div class="chapter-number reveal">Chapter 03</div>
-    <h2 class="chapter-title reveal reveal-delay-1">The Caffeine <em>Chronicles</em></h2>
-    <p class="chapter-lead reveal reveal-delay-2">
-      Coffee is not a beverage. It is a debugging tool, a motivation engine, and the primary
-      reason the software industry exists. Click the hours to activate.
-    </p>
-
-    <div class="two-col" style="gap:56px;align-items:start">
-
-      <!-- Left: hour grid + status -->
-      <div class="reveal">
-        <p style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;margin-bottom:8px">
-          DAILY COFFEE INTAKE — ACTIVATE AN HOUR
-        </p>
-        <!-- Built dynamically by script.js → buildHourGrid() -->
-        <div class="hour-grid" id="hour-grid"></div>
-
-        <div style="margin-top:24px;padding:16px;border:1px solid var(--rule);background:var(--paper-card);border-radius:6px">
-          <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);margin-bottom:4px">CURRENT STATUS</div>
-          <div style="font-family:var(--font-serif);font-size:22px;font-weight:700" id="coffee-status">Select a time of day</div>
-          <div style="font-size:13px;color:var(--ink-soft);margin-top:4px" id="coffee-note">—</div>
-        </div>
-      </div>
-
-      <!-- Right: SVG chart + stat bars -->
-      <div class="reveal reveal-delay-2">
-        <p style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;margin-bottom:8px">
-          PRODUCTIVITY VS CUPS OF COFFEE
-        </p>
-        <div class="productivity-chart">
-          <svg class="chart-svg" viewBox="0 0 400 150" preserveAspectRatio="none">
-            <path class="chart-path-fill" id="chart-fill"
-              d="M0 150 L0 120 C40 115 60 60 90 40 C120 20 130 10 160 25 C190 40 200 80 230 100
-                 C260 120 280 130 310 125 C340 120 360 118 400 115 L400 150 Z"/>
-            <path class="chart-path" id="chart-line"
-              d="M0 120 C40 115 60 60 90 40 C120 20 130 10 160 25 C190 40 200 80 230 100
-                 C260 120 280 130 310 125 C340 120 360 118 400 115"/>
-          </svg>
-          <div style="position:absolute;bottom:-20px;left:0;right:0;display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;color:var(--ink-muted)">
-            <span>0 cups</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5+</span>
+        <!-- Bug log -->
+        <div class="bug-log reveal rd2">
+          <p class="panel-lbl">Click an entry to reveal the truth</p>
+          <div class="log-item" onclick="toggleLog(this)">
+            <div class="li-head">
+              <span class="li-time">09:14 AM</span><span class="li-badge red">ERROR</span>
+            </div>
+            <div class="li-title">Code works on my machine</div>
+            <div class="li-preview">Feature is complete. QA says it's broken. You know QA is wrong.</div>
+            <div class="li-expand"><div class="li-code">EnvironmentError: Works exclusively in your specific setup.<br>Production runs Node 16. You're on Node 21.<br>The difference: everything.</div></div>
+            <div class="li-chevron">›</div>
           </div>
-          <div style="position:absolute;top:0;left:-30px;bottom:0;display:flex;flex-direction:column;justify-content:space-between;font-family:var(--font-mono);font-size:9px;color:var(--ink-muted)">
-            <span>High</span><span>Med</span><span>Low</span>
+          <div class="log-item" onclick="toggleLog(this)">
+            <div class="li-head">
+              <span class="li-time">11:03 AM</span><span class="li-badge red">TypeError</span>
+            </div>
+            <div class="li-title">undefined is not a function</div>
+            <div class="li-preview">A classic. An old friend. You have met before in dark times.</div>
+            <div class="li-expand"><div class="li-code">You called getUserData() before the data was fetched.<br>Async functions existed for a reason.<br>You knew this reason. You forgot this reason.</div></div>
+            <div class="li-chevron">›</div>
           </div>
-        </div>
-
-        <div style="margin-top:56px">
-          <div class="pull-quote" style="font-size:clamp(17px,2.5vw,22px)">
-            "First cup: possibility. Second cup: clarity. Third cup: velocity.
-             Fourth cup: chaos. Fifth cup: you rewrote the entire codebase."
+          <div class="log-item" onclick="toggleLog(this)">
+            <div class="li-head">
+              <span class="li-time">2:47 PM</span><span class="li-badge amber">WARN</span>
+            </div>
+            <div class="li-title">It was working this morning</div>
+            <div class="li-preview">You changed "one small thing." It was not one small thing.</div>
+            <div class="li-expand"><div class="li-code">You renamed userData → userInfo at 11:47 AM<br>but forgot to update line 284.<br>You will not admit this in the stand-up.</div></div>
+            <div class="li-chevron">›</div>
           </div>
-        </div>
-
-        <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px">
-          <div>
-            <div class="coffee-label"><span>Focus</span><span id="focus-val">—</span></div>
-            <div class="coffee-bar-container"><div class="coffee-bar-fill" id="focus-bar" style="background:var(--green)"></div></div>
-          </div>
-          <div>
-            <div class="coffee-label"><span>Confidence</span><span id="conf-val">—</span></div>
-            <div class="coffee-bar-container"><div class="coffee-bar-fill" id="conf-bar" style="background:var(--blue)"></div></div>
-          </div>
-          <div>
-            <div class="coffee-label"><span>Anxiety</span><span id="anx-val">—</span></div>
-            <div class="coffee-bar-container"><div class="coffee-bar-fill" id="anx-bar" style="background:var(--accent)"></div></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     PARALLAX INTERLUDE
-════════════════════════════════════════════════════════════ -->
-<div class="parallax-quote" id="parallax-quote">
-  <div class="parallax-bg-text" id="parallax-bg">DEADLINE</div>
-  <div class="parallax-quote-text reveal">
-    "It's done. I just need to clean up a few things."<br>
-    <em style="font-size:0.7em;opacity:0.6">— last words of every project</em>
-  </div>
-  <div class="parallax-quote-attr reveal reveal-delay-1">§ 04 · THE DEADLINE DIMENSION</div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════
-     CHAPTER 04 — THE DEADLINE DIMENSION
-════════════════════════════════════════════════════════════ -->
-<section class="chapter" id="deadline">
-  <div class="chapter-inner">
-    <div class="chapter-number reveal">Chapter 04</div>
-    <h2 class="chapter-title reveal reveal-delay-1">The Deadline <em>Dimension</em></h2>
-    <p class="chapter-lead reveal reveal-delay-2">
-      Every project has three phases: the phase where you think you'll finish early,
-      the phase where you realise you won't, and the phase that's simply called "Friday night."
-    </p>
-
-    <div class="deadline-cards reveal">
-      <div class="dl-card">
-        <div class="dl-phase">Week 1</div>
-        <div class="dl-title">Peak Optimism</div>
-        <div class="dl-body">
-          The architecture is elegant. The ticket estimates are reasonable.
-          You've left buffer time. You feel like a professional. You are happy.
-        </div>
-        <span class="dl-tag tag-calm">Status: Thriving</span>
-      </div>
-      <div class="dl-card">
-        <div class="dl-phase">Week 2–3</div>
-        <div class="dl-title">The Negotiation</div>
-        <div class="dl-body">
-          The requirements changed. The API is undocumented. You discovered a dependency
-          that requires a dependency. The buffer is gone. The buffer was an illusion.
-        </div>
-        <span class="dl-tag tag-warn">Status: Negotiating</span>
-      </div>
-      <div class="dl-card">
-        <div class="dl-phase">Week 4 (aka Friday)</div>
-        <div class="dl-title">Controlled Chaos</div>
-        <div class="dl-body">
-          You commit directly to main. You comment out the tests. You write
-          "TODO: fix later" in fourteen places. It ships. It works. Nobody asks how.
-        </div>
-        <span class="dl-tag tag-danger">Status: Shipping</span>
-      </div>
-    </div>
-
-    <!-- Commit message evolution -->
-    <div style="margin-top:48px" class="reveal reveal-delay-2">
-      <div style="padding:28px;border:1px solid var(--rule);border-radius:6px;background:var(--paper-card)">
-        <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);margin-bottom:16px;letter-spacing:0.06em">
-          COMMIT MESSAGE EVOLUTION
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="display:flex;gap:12px;align-items:baseline">
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--ink-muted);min-width:60px">Day 2</span>
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--green)">feat(auth): implement secure token-based authentication with refresh logic</code>
-          </div>
-          <div style="display:flex;gap:12px;align-items:baseline">
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--ink-muted);min-width:60px">Day 9</span>
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--amber)">fix: auth stuff (again)</code>
-          </div>
-          <div style="display:flex;gap:12px;align-items:baseline">
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--ink-muted);min-width:60px">Day 14</span>
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--amber)">wip</code>
-          </div>
-          <div style="display:flex;gap:12px;align-items:baseline">
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--ink-muted);min-width:60px">Day 21</span>
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--accent)">asdf</code>
-          </div>
-          <div style="display:flex;gap:12px;align-items:baseline">
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--ink-muted);min-width:60px">Day 28</span>
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--accent)">please work</code>
-          </div>
-          <div style="display:flex;gap:12px;align-items:baseline">
-            <span style="font-family:var(--font-mono);font-size:10px;color:var(--ink-muted);min-width:60px">Day 29</span>
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--green)">release: v1.0.0</code>
+          <div class="log-item" onclick="toggleLog(this)">
+            <div class="li-head">
+              <span class="li-time">4:59 PM</span><span class="li-badge green">FIXED</span>
+            </div>
+            <div class="li-title">Fixed it</div>
+            <div class="li-preview">You don't know how. You don't know why. Please don't ask.</div>
+            <div class="li-expand"><div class="li-code">Resolution: Deleted node_modules. Ran npm install.<br>This is superstition.<br>It worked anyway.</div></div>
+            <div class="li-chevron">›</div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- ═══════════ CH03 CAFFEINE ═══════════ -->
+  <section id="coffee" class="ch-section">
+    <div class="container">
+      <header class="ch-header reveal">
+        <div class="ch-badge"><span class="ch-n">03</span><span class="ch-rule"></span><span class="ch-lbl">The Caffeine Chronicles</span></div>
+        <h2 class="ch-title">The Caffeine <em>Chronicles</em></h2>
+        <p class="ch-lead">Coffee is not a beverage. It is a debugging tool, a motivation engine, and the primary reason the software industry exists.</p>
+      </header>
 
-<hr class="divider">
+      <div class="coffee-layout">
+        <div class="coffee-left reveal">
+          <!-- SVG Mug -->
+          <div class="mug-wrap">
+            <svg viewBox="0 0 200 230" class="mug-svg" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="coffeeGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#c8764a"/>
+                  <stop offset="100%" stop-color="#7b3f1a"/>
+                </linearGradient>
+                <linearGradient id="mugGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#f5ede3"/>
+                  <stop offset="100%" stop-color="#efe3d7"/>
+                </linearGradient>
+                <clipPath id="mugClip">
+                  <rect x="38" y="52" width="124" height="138" rx="10"/>
+                </clipPath>
+              </defs>
+              <!-- Steam -->
+              <path class="steam s1" d="M72 44 C68 34,76 24,72 14" stroke="#c8764a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path class="steam s2" d="M100 42 C96 31,104 21,100 11" stroke="#c8764a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path class="steam s3" d="M128 44 C124 34,132 24,128 14" stroke="#c8764a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <!-- Mug shadow -->
+              <ellipse cx="100" cy="202" rx="70" ry="10" fill="rgba(180,140,100,0.18)"/>
+              <!-- Mug body -->
+              <rect x="37" y="51" width="126" height="140" rx="11" fill="url(#mugGrad)" stroke="#ddc9b4" stroke-width="1.5"/>
+              <!-- Coffee fill (animated via JS transform) -->
+              <rect id="coffeeLevel" x="38" y="52" width="124" height="0" fill="url(#coffeeGrad)" clip-path="url(#mugClip)"/>
+              <!-- Foam -->
+              <ellipse id="coffeeFoam" cx="100" cy="52" rx="62" ry="7" fill="#e8c49a" opacity="0"/>
+              <!-- Rim highlight -->
+              <rect x="37" y="51" width="126" height="18" rx="9" fill="rgba(255,255,255,0.45)"/>
+              <!-- Handle outer -->
+              <path d="M163 82 Q198 82 198 121 Q198 160 163 160" stroke="#ddc9b4" stroke-width="12" fill="none" stroke-linecap="round"/>
+              <!-- Handle inner -->
+              <path d="M163 86 Q190 86 190 121 Q190 156 163 156" stroke="url(#mugGrad)" stroke-width="8" fill="none" stroke-linecap="round"/>
+              <!-- Mug lip -->
+              <rect x="37" y="51" width="126" height="12" rx="11" fill="#f0e4d5"/>
+            </svg>
+            <div class="mug-label" id="mug-label">Select a time of day</div>
+          </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     CHAPTER 05 — ENLIGHTENMENT
-════════════════════════════════════════════════════════════ -->
-<section class="chapter" id="enlighten">
-  <div class="chapter-inner">
-    <div class="chapter-number reveal">Chapter 05</div>
-    <h2 class="chapter-title reveal reveal-delay-1">The Moment of <em>Enlightenment</em></h2>
-    <p class="chapter-lead reveal reveal-delay-2">
-      After years of fighting the machine, you begin to suspect that the machine was never the enemy.
-      The enemy was yourself. Specifically, past-you. Past-you was a monster.
-    </p>
+          <!-- Hour buttons -->
+          <div class="hour-grid" id="hour-grid"></div>
+        </div>
 
-    <div class="two-col" style="gap:56px">
+        <div class="coffee-right reveal rd2">
+          <div class="coffee-status" id="coffee-status">
+            Click any hour above to run your daily developer diagnostic.
+          </div>
 
-      <!-- Left: skill bars -->
-      <div>
-        <p style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;margin-bottom:16px">
-          THINGS YOU ACTUALLY LEARNED (hover to inspect)
-        </p>
-        <div class="skills-grid reveal">
-          <div class="skill-item" onmouseenter="animateSkill(this)">
-            <div class="skill-name">Patience</div>
-            <div class="skill-sub">acquired via compiler errors</div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-val="94"></div></div>
+          <div class="c-meters">
+            <div class="c-meter">
+              <div class="cm-row"><span class="cm-lbl">Focus</span><span class="cm-val" id="vFocus">—</span></div>
+              <div class="cm-track"><div class="cm-fill focus" id="mFocus"></div></div>
+            </div>
+            <div class="c-meter">
+              <div class="cm-row"><span class="cm-lbl">Confidence</span><span class="cm-val" id="vConf">—</span></div>
+              <div class="cm-track"><div class="cm-fill conf" id="mConf"></div></div>
+            </div>
+            <div class="c-meter">
+              <div class="cm-row"><span class="cm-lbl">Anxiety</span><span class="cm-val" id="vAnx">—</span></div>
+              <div class="cm-track"><div class="cm-fill anx" id="mAnx"></div></div>
+            </div>
           </div>
-          <div class="skill-item" onmouseenter="animateSkill(this)">
-            <div class="skill-name">Googling</div>
-            <div class="skill-sub">your most used skill</div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-val="100"></div></div>
-          </div>
-          <div class="skill-item" onmouseenter="animateSkill(this)">
-            <div class="skill-name">Reading errors</div>
-            <div class="skill-sub">eventually</div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-val="78"></div></div>
-          </div>
-          <div class="skill-item" onmouseenter="animateSkill(this)">
-            <div class="skill-name">Saying "it depends"</div>
-            <div class="skill-sub">in meetings</div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-val="99"></div></div>
-          </div>
-          <div class="skill-item" onmouseenter="animateSkill(this)">
-            <div class="skill-name">Version control</div>
-            <div class="skill-sub">after losing 3 days of work</div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-val="85"></div></div>
-          </div>
-          <div class="skill-item" onmouseenter="animateSkill(this)">
-            <div class="skill-name">Empathy</div>
-            <div class="skill-sub">for whoever reads your code</div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-val="71"></div></div>
-          </div>
+
+          <blockquote class="pull-quote reveal rd3">
+            <div class="pq-mark">"</div>
+            <p>First cup: possibility. Second cup: clarity. Third cup: velocity. Fourth cup: chaos. Fifth cup: you rewrote the entire codebase.</p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CH04 DEADLINE ═══════════ -->
+  <section id="deadline" class="ch-section ch-alt">
+    <div class="container">
+      <header class="ch-header reveal">
+        <div class="ch-badge"><span class="ch-n">04</span><span class="ch-rule"></span><span class="ch-lbl">The Deadline Dimension</span></div>
+        <h2 class="ch-title">The Deadline <em>Dimension</em></h2>
+        <p class="ch-lead">Every project has three phases: the phase where you think you'll finish early, the phase where you realise you won't, and the phase that's simply called "Friday night."</p>
+      </header>
+
+      <!-- Phase cards -->
+      <div class="phases reveal">
+        <div class="phase-card p1 active-phase" id="p1" onclick="setPhase(1)">
+          <div class="pc-week">Week 1</div>
+          <div class="pc-title">Peak Optimism</div>
+          <div class="pc-body">The architecture is elegant. The estimates are reasonable. You've left buffer time. You feel like a professional. You are happy.</div>
+          <div class="pc-badge thriving"><span class="bd"></span>Thriving</div>
+        </div>
+        <div class="phase-card p2" id="p2" onclick="setPhase(2)">
+          <div class="pc-week">Week 2–3</div>
+          <div class="pc-title">The Negotiation</div>
+          <div class="pc-body">Requirements changed. The API is undocumented. The buffer is gone. The buffer was always an illusion.</div>
+          <div class="pc-badge negotiating"><span class="bd"></span>Negotiating</div>
+        </div>
+        <div class="phase-card p3" id="p3" onclick="setPhase(3)">
+          <div class="pc-week">Week 4 (Friday)</div>
+          <div class="pc-title">Controlled Chaos</div>
+          <div class="pc-body">You commit to main. Tests are commented out. "TODO: fix later" appears 14 times. It ships. Nobody asks how.</div>
+          <div class="pc-badge shipping"><span class="bd"></span>Shipping</div>
         </div>
       </div>
 
-      <!-- Right: insight list -->
-      <div class="reveal reveal-delay-2">
-        <ul class="insight-list">
-          <li class="insight-item">
-            <span class="insight-num">01</span>
-            <span class="insight-text">
-              <strong>The best code is the code you don't write.</strong>
-              Every line is a liability. Every abstraction is a future explanation. Less, always, is more.
-            </span>
-          </li>
-          <li class="insight-item">
-            <span class="insight-num">02</span>
-            <span class="insight-text">
-              <strong>Ask for help sooner.</strong> That thing you spent three days on?
-              A colleague would have known in ten minutes. Pride is expensive.
-            </span>
-          </li>
-          <li class="insight-item">
-            <span class="insight-num">03</span>
-            <span class="insight-text">
-              <strong>The tests you skip today</strong> will introduce themselves at 11:47 PM
-              before a release. They remember you even when you forget them.
-            </span>
-          </li>
-          <li class="insight-item">
-            <span class="insight-num">04</span>
-            <span class="insight-text">
-              <strong>Name things clearly.</strong>
-              <code style="font-family:var(--font-mono);font-size:0.88em;background:var(--paper-warm);padding:1px 5px;border-radius:3px">x</code>
-              is not a variable name. It is a mystery. Future-you will hate you.
-            </span>
-          </li>
-          <li class="insight-item">
-            <span class="insight-num">05</span>
-            <span class="insight-text">
-              <strong>You will never stop learning.</strong>
-              This is the hardest and the best part. The day you think you know everything
-              is the day something breaks in production.
-            </span>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Closing statement -->
-    <div style="margin-top:64px;text-align:center" class="reveal">
-      <div style="font-family:var(--font-serif);font-size:clamp(16px,3vw,22px);font-style:italic;color:var(--ink-soft);max-width:52ch;margin:0 auto;line-height:1.6">
-        And yet — every single day, a developer sits down at their desk, opens their editor,
-        and types those same three words. Hello, World. Full of hope. Full of coffee. Ready to do it all again.
-      </div>
-      <div style="width:40px;height:1px;background:var(--rule);margin:32px auto"></div>
-      <div style="font-family:var(--font-mono);font-size:11px;color:var(--ink-muted);letter-spacing:0.08em">
-        This is the life. We chose it. We'd choose it again.
+      <!-- Commit log -->
+      <div class="commit-log reveal rd2">
+        <div class="clog-head">
+          <span class="clog-icon">⎇</span>
+          <span>Commit Message Evolution — <code>main</code></span>
+          <span class="clog-branch">protected branch (cheerfully ignored)</span>
+        </div>
+        <div class="clog-body">
+          <div class="clog-row"><span class="cr-day">Day 2</span><span class="cr-hash">a1b2c3d</span><span class="cr-msg good">feat(auth): implement secure token-based authentication with refresh logic</span></div>
+          <div class="clog-row"><span class="cr-day">Day 9</span><span class="cr-hash">e4f5a6b</span><span class="cr-msg">fix: auth stuff (again)</span></div>
+          <div class="clog-row"><span class="cr-day">Day 14</span><span class="cr-hash">c7d8e9f</span><span class="cr-msg muted">wip</span></div>
+          <div class="clog-row"><span class="cr-day">Day 21</span><span class="cr-hash">f0a1b2c</span><span class="cr-msg muted">asdf</span></div>
+          <div class="clog-row"><span class="cr-day">Day 28</span><span class="cr-hash">3d4e5f6</span><span class="cr-msg danger">please work</span></div>
+          <div class="clog-row final"><span class="cr-day">Day 29</span><span class="cr-hash">7a8b9c0</span><span class="cr-msg success">release: v1.0.0 🎉</span></div>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- ═══════════ CH05 ENLIGHTENMENT ═══════════ -->
+  <section id="enlighten" class="ch-section">
+    <div class="container">
+      <header class="ch-header reveal">
+        <div class="ch-badge"><span class="ch-n">05</span><span class="ch-rule"></span><span class="ch-lbl">Enlightenment</span></div>
+        <h2 class="ch-title">The Moment of <em>Enlightenment</em></h2>
+        <p class="ch-lead">After years of fighting the machine, you begin to suspect that the machine was never the enemy. The enemy was yourself. Specifically, past-you. Past-you was a monster.</p>
+      </header>
 
-<!-- ═══════════════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════════════════════ -->
-<footer>
-  <div class="footer-title">fin.</div>
-  <div class="footer-sub">The Life of a Developer · An Interactive Memoir · 2024</div>
-  <div class="footer-rule"></div>
-  <div class="footer-credits">
-    Built with HTML · CSS · Vanilla JS<br>
-    No frameworks were harmed in the making of this experience.<br>
-    (Two were considered. Three were installed. All were uninstalled.)
-  </div>
-</footer>
+      <!-- Skills grid -->
+      <div class="skills-grid">
+        <div class="sk-card reveal" style="--sd:0s">
+          <div class="sk-n">01</div><div class="sk-title">Patience</div>
+          <div class="sk-body">Acquired exclusively via compiler errors and three-hour CI pipelines.</div>
+          <div class="sk-foot">acquired via compiler errors</div>
+        </div>
+        <div class="sk-card reveal" style="--sd:0.07s">
+          <div class="sk-n">02</div><div class="sk-title">Googling</div>
+          <div class="sk-body">Your most used professional skill. No recruiter will ask about it.</div>
+          <div class="sk-foot">stackoverflow.com</div>
+        </div>
+        <div class="sk-card reveal" style="--sd:0.14s">
+          <div class="sk-n">03</div><div class="sk-title">Reading Errors</div>
+          <div class="sk-body">Eventually. After ignoring them for three years.</div>
+          <div class="sk-foot">eventually</div>
+        </div>
+        <div class="sk-card reveal" style="--sd:0.21s">
+          <div class="sk-n">04</div><div class="sk-title">Saying "It Depends"</div>
+          <div class="sk-body">The most powerful phrase in any technical meeting.</div>
+          <div class="sk-foot">in every meeting</div>
+        </div>
+        <div class="sk-card reveal" style="--sd:0.28s">
+          <div class="sk-n">05</div><div class="sk-title">Version Control</div>
+          <div class="sk-body">Learned after losing three days of work. You commit obsessively now.</div>
+          <div class="sk-foot">after losing 3 days of work</div>
+        </div>
+        <div class="sk-card reveal" style="--sd:0.35s">
+          <div class="sk-n">06</div><div class="sk-title">Empathy</div>
+          <div class="sk-body">For whoever inherits your code. They are suffering. You know this.</div>
+          <div class="sk-foot">for whoever reads your code</div>
+        </div>
+      </div>
 
-<!-- JavaScript — loaded at end of body so DOM is ready -->
-<script src="script.js"></script>
+      <!-- Lessons -->
+      <div class="lessons reveal rd2">
+        <div class="lesson"><div class="ln">01</div><div class="lt"><strong>The best code is the code you don't write.</strong> Every line is a liability. Every abstraction is a future explanation. Less, always, is more.</div></div>
+        <div class="lesson"><div class="ln">02</div><div class="lt"><strong>Ask for help sooner.</strong> That thing you spent three days on? A colleague would have known in ten minutes. Pride is expensive.</div></div>
+        <div class="lesson"><div class="ln">03</div><div class="lt"><strong>The tests you skip today</strong> will introduce themselves at 11:47 PM before a release. They remember you even when you forget them.</div></div>
+        <div class="lesson"><div class="ln">04</div><div class="lt"><strong>Name things clearly.</strong> <code>x</code> is not a variable name. It is a mystery. Future-you will hate you.</div></div>
+        <div class="lesson"><div class="ln">05</div><div class="lt"><strong>You will never stop learning.</strong> This is the hardest and the best part. The day you think you know everything is the day something breaks in production.</div></div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ═══════════ FIN ═══════════ -->
+  <section id="fin">
+    <div class="fin-blob"></div>
+    <div class="container fin-wrap">
+      <div class="fin-word reveal">fin.</div>
+      <p class="fin-outro reveal rd1">And yet — every single day, a developer sits down at their desk, opens their editor, and types those same three words. <em>Hello, World.</em> Full of hope. Full of coffee. Ready to do it all again.</p>
+      <p class="fin-line reveal rd2">This is the life. We chose it. We'd choose it again.</p>
+      <div class="fin-meta reveal rd3">
+        <p>The Life of a Developer · An Interactive Memoir · 2026</p>
+        <p>Built with HTML · CSS · Vanilla JS · Zero Dependencies</p>
+        <p class="fin-fn">No frameworks were harmed in the making of this experience.<br>(Two were considered. Three were installed. All were uninstalled.)</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
